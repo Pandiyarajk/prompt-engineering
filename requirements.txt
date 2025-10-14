@@ -1,0 +1,101 @@
+# Prompt Engineering Course - Python Dependencies
+
+# Core Dependencies
+openai>=1.3.0                # OpenAI API client
+python-dotenv>=1.0.0         # Environment variable management
+
+# CLI Tools
+click>=8.1.0                 # Command-line interface creation
+
+# Web Frameworks (for projects)
+fastapi>=0.104.0             # Modern web framework
+uvicorn>=0.24.0              # ASGI server
+pydantic>=2.5.0              # Data validation
+
+# Testing Frameworks
+pytest>=7.4.0                # Testing framework
+pytest-html>=4.1.0           # HTML test reports
+pytest-cov>=4.1.0            # Code coverage
+pytest-xdist>=3.5.0          # Parallel test execution
+
+# Test Automation
+selenium>=4.15.0             # Web automation
+playwright>=1.40.0           # Modern web automation
+requests>=2.31.0             # HTTP library
+beautifulsoup4>=4.12.0       # HTML parsing
+
+# Data Generation
+Faker>=20.0.0                # Realistic test data generation
+
+# Data Processing
+pandas>=2.1.0                # Data manipulation
+openpyxl>=3.1.0              # Excel file handling
+
+# File Handling
+PyYAML>=6.0.1                # YAML parsing
+toml>=0.10.2                 # TOML parsing
+
+# Web Scraping (for advanced projects)
+lxml>=4.9.3                  # XML/HTML processing
+
+# AI and ML (optional)
+langchain>=0.0.350           # LangChain framework
+tiktoken>=0.5.1              # Token counting
+
+# Utilities
+rich>=13.7.0                 # Beautiful terminal output
+tqdm>=4.66.0                 # Progress bars
+loguru>=0.7.2                # Advanced logging
+
+# Database (for projects)
+sqlalchemy>=2.0.0            # SQL toolkit and ORM
+aiosqlite>=0.19.0            # Async SQLite
+
+# HTTP Client (async)
+httpx>=0.25.0                # Async HTTP client
+aiohttp>=3.9.0               # Async HTTP client/server
+
+# Code Quality
+black>=23.11.0               # Code formatter
+flake8>=6.1.0                # Linting
+mypy>=1.7.0                  # Type checking
+isort>=5.12.0                # Import sorting
+
+# Documentation
+mkdocs>=1.5.0                # Documentation generator
+mkdocs-material>=9.4.0       # Material theme for MkDocs
+
+# Development
+ipython>=8.17.0              # Enhanced Python shell
+jupyter>=1.0.0               # Jupyter notebooks
+notebook>=7.0.0              # Jupyter notebook
+
+# API Testing
+tavern>=2.8.0                # API testing framework
+
+# Performance Testing
+locust>=2.17.0               # Load testing
+
+# Image Processing (for visual testing)
+Pillow>=10.1.0               # Image processing
+opencv-python>=4.8.0         # Computer vision
+
+# JSON Schema Validation
+jsonschema>=4.20.0           # JSON schema validation
+
+# Environment Management
+environs>=10.0.0             # Environment variable parsing
+
+# Date/Time
+python-dateutil>=2.8.2       # Date utilities
+
+# Markdown
+markdown>=3.5.0              # Markdown processing
+
+# Security
+cryptography>=41.0.0         # Cryptographic recipes
+
+# Note: Install only what you need for your specific projects
+# Basic usage: pip install openai python-dotenv pytest
+# For automation: pip install selenium pytest requests
+# For all features: pip install -r requirements.txt
