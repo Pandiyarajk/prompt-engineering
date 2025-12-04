@@ -2,313 +2,508 @@
 
 ## Lesson 2: Parameters and Temperature Settings
 
-### Understanding AI Model Parameters
+---
 
-When using AI models via API, you can control several parameters that affect the output. Understanding these helps you get more consistent and appropriate results.
+## 🎯 Lesson Overview
 
-### Key Parameters
+**Time Required:** 45-60 minutes  
+**Difficulty:** Beginner to Intermediate  
+**Prerequisites:** Lesson 1 (Basic Prompt Structure) completed
 
-#### 1. **Temperature**
+In this lesson, you'll learn:
+- What AI parameters are and why they matter
+- How temperature affects AI responses
+- When to use high vs low settings
+- Optimal configurations for different tasks
+- How to use parameters even in the ChatGPT web interface
 
-**What it controls:** Randomness and creativity of responses
+---
 
-**Range:** 0.0 to 2.0
-- **0.0** - Deterministic, focused, consistent
-- **0.7** - Balanced (default for most use cases)
-- **1.5+** - Creative, varied, unpredictable
+## 🎚️ What Are AI Parameters?
 
-**For Testing & QA:**
-```python
-# Test case generation - use low temperature for consistency
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[{"role": "user", "content": "Generate login test cases"}],
-    temperature=0.2  # More focused and consistent
-)
+When using AI models (especially via API), you can adjust settings that control how the AI generates responses. Think of them like dials on a mixing board - each one affects the output in specific ways.
 
-# Brainstorming edge cases - use higher temperature
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[{"role": "user", "content": "What unusual edge cases might break a login?"}],
-    temperature=0.9  # More creative and diverse
-)
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  AI PARAMETERS                                                   │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  🌡️ TEMPERATURE ──────────────────────── Randomness/Creativity   │
+│      0.0 ════════════════════════════ 2.0                       │
+│      Focused                        Random                      │
+│                                                                  │
+│  📏 MAX TOKENS ───────────────────────── Response Length         │
+│      100 ════════════════════════════ 4000                      │
+│      Short                          Long                        │
+│                                                                  │
+│  🎯 TOP P ────────────────────────────── Token Selection         │
+│      0.1 ════════════════════════════ 1.0                       │
+│      Narrow                         Wide                        │
+│                                                                  │
+│  🔄 FREQUENCY PENALTY ────────────────── Reduce Repetition       │
+│      -2.0 ═══════════════════════════ 2.0                       │
+│      Repeat                         Avoid                       │
+│                                                                  │
+│  ✨ PRESENCE PENALTY ─────────────────── Encourage Novelty       │
+│      -2.0 ═══════════════════════════ 2.0                       │
+│      Stay on topic                  Explore                     │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-**Recommended Temperature Settings:**
+---
 
-| Task | Temperature | Reason |
-|------|-------------|--------|
-| Code generation | 0.2 - 0.3 | Need consistent, working code |
-| Test case creation | 0.3 - 0.5 | Want thoroughness but consistency |
-| Bug analysis | 0.2 - 0.4 | Need focused, accurate diagnosis |
-| Edge case brainstorming | 0.7 - 1.0 | Want creative, diverse ideas |
-| Documentation | 0.3 - 0.5 | Need clear, consistent language |
-| Code review | 0.2 - 0.4 | Want focused, specific feedback |
+## 🌡️ Temperature: The Most Important Parameter
 
-#### 2. **Max Tokens**
+### What Temperature Does
 
-**What it controls:** Maximum length of the response
+Temperature controls **randomness** in AI responses. It determines how "creative" or "focused" the AI will be.
 
-**Typical values:**
-- Short answers: 100-500 tokens
-- Medium responses: 500-1000 tokens
-- Long content: 1000-4000 tokens
+```
+LOW TEMPERATURE (0.0 - 0.3)          HIGH TEMPERATURE (0.7 - 1.5)
+┌────────────────────────┐           ┌────────────────────────┐
+│ • Consistent           │           │ • Creative             │
+│ • Predictable          │           │ • Varied               │
+│ • Focused              │           │ • Unpredictable        │
+│ • Deterministic        │           │ • Diverse              │
+│ • Same output each run │           │ • Different each run   │
+└────────────────────────┘           └────────────────────────┘
 
-**Note:** ~4 characters = 1 token (approximate)
-
-**Example:**
-```python
-# Quick test case summary
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[{"role": "user", "content": "Summarize key test scenarios for login"}],
-    max_tokens=200  # Brief summary
-)
-
-# Detailed test automation code
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[{"role": "user", "content": "Create complete Selenium test suite"}],
-    max_tokens=2000  # Comprehensive code
-)
+Best for:                            Best for:
+• Code generation                    • Brainstorming
+• Test cases                         • Creative writing
+• Documentation                      • Edge case ideas
+• Factual answers                    • Alternative approaches
 ```
 
-#### 3. **Top P (Nucleus Sampling)**
+### Visual Example
 
-**What it controls:** Alternative to temperature for controlling randomness
+```
+Prompt: "Give me 3 names for a testing utility function"
 
-**Range:** 0.0 to 1.0
-- **0.1** - Very focused, considers only top 10% probable tokens
-- **0.5** - Balanced
-- **1.0** - Considers all possibilities
+Temperature 0.1 (Run 3 times):
+  Run 1: validate_input, check_value, verify_data
+  Run 2: validate_input, check_value, verify_data
+  Run 3: validate_input, check_value, verify_data
+  ─────────────────────────────────────────────────
+  Result: Same answers each time (consistent)
 
-**Best Practice:** Use either temperature OR top_p, not both
-
-```python
-# Using top_p for code generation
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[{"role": "user", "content": "Generate pytest fixture"}],
-    top_p=0.1,  # Very focused
-    temperature=1  # Set to 1 when using top_p
-)
+Temperature 1.0 (Run 3 times):
+  Run 1: verify_input, data_checker, assertion_helper
+  Run 2: input_validator, test_evaluator, value_inspector
+  Run 3: quality_checker, param_analyzer, data_validator
+  ─────────────────────────────────────────────────
+  Result: Different answers each time (creative)
 ```
 
-#### 4. **Frequency Penalty**
+### Temperature Guidelines
 
-**What it controls:** Reduces repetition of tokens
+| Temperature | Range | Use For | Example Tasks |
+|-------------|-------|---------|---------------|
+| **Very Low** | 0.0-0.2 | Precise, consistent output | Code generation, test scripts, documentation |
+| **Low** | 0.2-0.4 | Reliable with slight variation | Test cases, bug analysis, structured output |
+| **Medium** | 0.4-0.7 | Balanced creativity/focus | General questions, explanations, summaries |
+| **High** | 0.7-1.0 | Creative, diverse output | Brainstorming, edge cases, alternatives |
+| **Very High** | 1.0-1.5 | Maximum creativity | Exploration, unusual ideas, experimentation |
 
-**Range:** -2.0 to 2.0
-- **Negative values** - Encourage repetition
-- **0** - No penalty
-- **Positive values** - Discourage repetition
+### When to Use Each Temperature
 
+#### Use LOW Temperature (0.1-0.3) For:
+
+✅ **Code Generation**
 ```python
-# Generating diverse test cases
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[{"role": "user", "content": "Create 20 different login test scenarios"}],
-    frequency_penalty=0.7  # Encourage variety
-)
-```
-
-#### 5. **Presence Penalty**
-
-**What it controls:** Encourages new topics
-
-**Range:** -2.0 to 2.0
-- **Negative values** - Stick to current topics
-- **0** - Neutral
-- **Positive values** - Explore new topics
-
-```python
-# Exploring different testing approaches
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[{"role": "user", "content": "Suggest testing strategies"}],
-    presence_penalty=0.6  # Encourage diverse approaches
+# API call example with low temperature
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[...],
+    temperature=0.2  # Consistent, working code
 )
 ```
+- Test automation scripts
+- Unit tests
+- API clients
+- Utility functions
 
-### Practical Examples for QA & Development
+✅ **Documentation**
+- README files
+- API documentation
+- Test plans
+- Technical specifications
 
-#### Example 1: Generating Test Cases (Consistent)
+✅ **Structured Output**
+- Test case tables
+- Bug reports
+- JSON/XML generation
+- Database queries
+
+#### Use HIGH Temperature (0.7-1.0) For:
+
+✅ **Brainstorming**
+```python
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[...],
+    temperature=0.9  # Creative, varied ideas
+)
+```
+- Edge case identification
+- Security vulnerability ideas
+- Test scenario exploration
+- Alternative solutions
+
+✅ **Creative Tasks**
+- Naming suggestions
+- Multiple approaches
+- Unusual test scenarios
+- "What could go wrong?" analysis
+
+---
+
+## 📏 Max Tokens: Response Length
+
+### What Max Tokens Does
+
+Max tokens limits the **length** of the AI response. Roughly:
+- 1 token ≈ 4 characters
+- 1 token ≈ 0.75 words
+- 100 tokens ≈ 75 words
+
+### Token Guidelines
+
+| Setting | Tokens | Use For |
+|---------|--------|---------|
+| **Short** | 50-200 | Quick answers, single items |
+| **Medium** | 200-500 | Explanations, short code |
+| **Long** | 500-1000 | Detailed responses, test suites |
+| **Very Long** | 1000-4000 | Complete code files, comprehensive docs |
+
+### Examples
 
 ```python
-import openai
+# Short response (quick test case summary)
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "List 5 login test scenarios"}],
+    max_tokens=200
+)
 
-def generate_test_cases(feature_description):
-    """
-    Generate consistent test cases
-    Using low temperature for reproducibility
-    """
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a meticulous QA engineer who creates comprehensive test cases."
-            },
-            {
-                "role": "user",
-                "content": f"Generate test cases for: {feature_description}"
-            }
-        ],
-        temperature=0.2,  # Low for consistency
-        max_tokens=1500,
-        top_p=1,
-        frequency_penalty=0.3,  # Some variety in wording
-        presence_penalty=0
-    )
-    return response.choices[0].message.content
-
-# Usage
-test_cases = generate_test_cases("user profile update feature")
-print(test_cases)
+# Long response (complete test suite)
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "Create complete Selenium test file"}],
+    max_tokens=2000
+)
 ```
 
-#### Example 2: Brainstorming Edge Cases (Creative)
+### ⚠️ Important Notes
 
-```python
-def brainstorm_edge_cases(feature):
-    """
-    Brainstorm creative edge cases
-    Using higher temperature for diversity
-    """
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a creative QA engineer who thinks of unusual edge cases."
-            },
-            {
-                "role": "user",
-                "content": f"What unusual edge cases could break this feature: {feature}"
-            }
-        ],
-        temperature=0.9,  # High for creativity
-        max_tokens=800,
-        frequency_penalty=0.8,  # Avoid repetitive ideas
-        presence_penalty=0.6  # Encourage exploring new angles
-    )
-    return response.choices[0].message.content
+- **Token limit includes both input AND output**
+- If response is cut off, increase max_tokens
+- Longer responses = higher API costs
+- ChatGPT web interface handles this automatically
 
-# Usage
-edge_cases = brainstorm_edge_cases("file upload with drag and drop")
-print(edge_cases)
+---
+
+## 🎯 Top P (Nucleus Sampling)
+
+### What Top P Does
+
+Top P is an alternative to temperature for controlling randomness. It controls what percentage of possible words the AI considers.
+
+```
+Top P = 0.1
+  • Only considers top 10% most likely words
+  • Very focused output
+  • Similar to low temperature
+
+Top P = 1.0
+  • Considers all possible words
+  • Full range of output
+  • Default setting
 ```
 
-#### Example 3: Code Generation (Precise)
+### ⚠️ Important Rule
+
+**Use EITHER temperature OR top_p, not both!**
 
 ```python
-def generate_test_code(test_scenario, language="python"):
-    """
-    Generate precise, working code
-    Using very low temperature
-    """
-    response = openai.ChatCompletion.create(
-        model="gpt-4",  # GPT-4 for better code quality
-        messages=[
-            {
-                "role": "system",
-                "content": f"You are an expert test automation engineer writing {language} code."
-            },
-            {
-                "role": "user",
-                "content": f"Write test automation code for: {test_scenario}"
-            }
-        ],
-        temperature=0.1,  # Very low for precise code
-        max_tokens=2000,
-        top_p=0.1  # Very focused
-    )
-    return response.choices[0].message.content
+# CORRECT - Use temperature
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[...],
+    temperature=0.3
+)
 
-# Usage
-code = generate_test_code("API test for user login endpoint using pytest and requests")
-print(code)
+# CORRECT - Use top_p (with temperature=1)
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[...],
+    temperature=1,
+    top_p=0.1
+)
+
+# INCORRECT - Don't use both
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[...],
+    temperature=0.3,
+    top_p=0.5  # Don't do this!
+)
 ```
 
-### Parameter Combinations for Different Tasks
+### When to Use Top P vs Temperature
 
-#### Configuration 1: Deterministic Test Documentation
+| Situation | Use | Setting |
+|-----------|-----|---------|
+| Need consistent code | Temperature | 0.2 |
+| Need creative ideas | Temperature | 0.8 |
+| Need very focused output | Top P | 0.1 |
+| General usage | Temperature | 0.7 (default) |
+
+---
+
+## 🔄 Frequency and Presence Penalties
+
+### Frequency Penalty
+
+Controls how much the AI avoids repeating the same words.
+
+```
+Frequency Penalty = 0: Normal repetition allowed
+Frequency Penalty = 0.5: Some repetition discouraged
+Frequency Penalty = 1.0: Strong avoidance of repetition
+```
+
+**Use case:** Generating diverse test cases
+
 ```python
-{
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "Generate 20 different test scenarios"}],
+    frequency_penalty=0.7  # Avoid repetitive scenarios
+)
+```
+
+### Presence Penalty
+
+Encourages the AI to talk about new topics.
+
+```
+Presence Penalty = 0: Stay on current topics
+Presence Penalty = 0.5: Introduce some new topics
+Presence Penalty = 1.0: Actively explore new topics
+```
+
+**Use case:** Exploring different testing angles
+
+```python
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "What are different ways to test this?"}],
+    presence_penalty=0.6  # Explore diverse approaches
+)
+```
+
+---
+
+## 📊 Optimal Settings for QA Tasks
+
+### Quick Reference Table
+
+| Task | Temp | Max Tokens | Freq Penalty | Pres Penalty |
+|------|------|------------|--------------|--------------|
+| Code generation | 0.2 | 2000 | 0.2 | 0 |
+| Test case creation | 0.3 | 1500 | 0.3 | 0 |
+| Bug analysis | 0.3 | 1000 | 0.2 | 0 |
+| Edge case brainstorming | 0.9 | 800 | 0.7 | 0.6 |
+| Test strategy | 0.5 | 1200 | 0.4 | 0.3 |
+| Code review | 0.3 | 1500 | 0.3 | 0.2 |
+| Documentation | 0.4 | 1000 | 0.3 | 0 |
+| Brainstorming | 1.0 | 1000 | 0.8 | 0.7 |
+
+### Configuration Presets
+
+#### Preset 1: Precise Code Generation
+
+```python
+config_code = {
     "temperature": 0.2,
-    "max_tokens": 1000,
-    "top_p": 1,
-    "frequency_penalty": 0,
-    "presence_penalty": 0
-}
-# Use for: Test plans, bug reports, test case templates
-```
-
-#### Configuration 2: Creative Problem Solving
-```python
-{
-    "temperature": 0.8,
-    "max_tokens": 1000,
-    "frequency_penalty": 0.7,
-    "presence_penalty": 0.6
-}
-# Use for: Finding edge cases, security vulnerabilities, performance issues
-```
-
-#### Configuration 3: Code Generation
-```python
-{
-    "temperature": 0.3,
     "max_tokens": 2000,
-    "top_p": 0.2,
+    "top_p": 1,
     "frequency_penalty": 0.2,
     "presence_penalty": 0
 }
-# Use for: Test scripts, automation code, API clients
+# Use for: Test scripts, automation code, utilities
 ```
 
-#### Configuration 4: Diverse Test Scenarios
+#### Preset 2: Detailed Test Cases
+
 ```python
-{
-    "temperature": 0.6,
+config_test_cases = {
+    "temperature": 0.3,
     "max_tokens": 1500,
-    "frequency_penalty": 0.8,
-    "presence_penalty": 0.5
+    "frequency_penalty": 0.3,
+    "presence_penalty": 0
 }
-# Use for: Multiple test scenarios, different testing approaches
+# Use for: Test case generation, test plans
 ```
 
-### ChatGPT Web Interface
-
-**Note:** When using ChatGPT web interface (chat.openai.com), you cannot directly control these parameters, but you can influence them through prompts:
-
-**For more consistent responses:**
-```
-"Provide a precise, deterministic answer..."
-"Give me the exact same format every time..."
-"Be very specific and consistent..."
-```
-
-**For more creative responses:**
-```
-"Think creatively and suggest unusual approaches..."
-"Give me diverse and varied ideas..."
-"Brainstorm multiple different solutions..."
-```
-
-### Testing Parameter Settings
-
-**Create a test script to experiment:**
+#### Preset 3: Creative Brainstorming
 
 ```python
-import openai
+config_creative = {
+    "temperature": 0.9,
+    "max_tokens": 1000,
+    "frequency_penalty": 0.8,
+    "presence_penalty": 0.6
+}
+# Use for: Edge cases, security ideas, exploration
+```
+
+#### Preset 4: Balanced Analysis
+
+```python
+config_analysis = {
+    "temperature": 0.5,
+    "max_tokens": 1200,
+    "frequency_penalty": 0.4,
+    "presence_penalty": 0.3
+}
+# Use for: Code review, bug analysis, strategy
+```
+
+---
+
+## 💬 Using Parameters in ChatGPT Web Interface
+
+If you're using the ChatGPT web interface (not API), you can't directly set parameters. However, you can **influence** the behavior through your prompt:
+
+### For More Consistent/Focused Output:
+
+```
+Be precise and deterministic in your answer.
+Give me the exact same format every time.
+Be very specific and consistent.
+Provide only one option, the most standard approach.
+```
+
+### For More Creative/Varied Output:
+
+```
+Think creatively and suggest unusual approaches.
+Give me diverse and varied ideas.
+Brainstorm multiple different solutions.
+What are some unconventional ways to...?
+Consider edge cases that others might miss.
+```
+
+### Example Prompts
+
+**For Code Generation (Low Temp Effect):**
+```
+Act as a Senior Python Developer.
+Write a function to validate email addresses.
+
+Be precise and provide the standard, production-ready implementation.
+Follow conventional patterns. No creative alternatives.
+```
+
+**For Brainstorming (High Temp Effect):**
+```
+Act as a Creative QA Engineer.
+What are unusual ways users might break a search feature?
+
+Think outside the box. Consider unconventional scenarios.
+Give me ideas that most testers wouldn't think of.
+```
+
+---
+
+## 💻 Practical Examples
+
+### Example 1: Generate Test Cases (Low Temperature)
+
+```python
 import os
+from openai import OpenAI
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def test_temperature_variations():
-    """Test how temperature affects output"""
-    prompt = "Generate 3 test cases for a search feature"
+def generate_test_cases(feature_description: str) -> str:
+    """Generate consistent test cases for a feature."""
+    
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a meticulous Senior QA Engineer who creates comprehensive, structured test cases."
+            },
+            {
+                "role": "user",
+                "content": f"""
+                Generate test cases for: {feature_description}
+                
+                Include positive, negative, and edge cases.
+                Format as a markdown table.
+                """
+            }
+        ],
+        temperature=0.2,      # Low for consistency
+        max_tokens=1500,
+        frequency_penalty=0.3
+    )
+    
+    return response.choices[0].message.content
+
+# Usage
+feature = "User login with email and password"
+test_cases = generate_test_cases(feature)
+print(test_cases)
+```
+
+### Example 2: Brainstorm Edge Cases (High Temperature)
+
+```python
+def brainstorm_edge_cases(feature_description: str) -> str:
+    """Generate creative edge cases for testing."""
+    
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a creative security tester who thinks of unusual ways things can break."
+            },
+            {
+                "role": "user",
+                "content": f"""
+                Think of unusual edge cases that could break: {feature_description}
+                
+                Be creative. Consider scenarios that normal testing might miss.
+                Include security, performance, and usability edge cases.
+                """
+            }
+        ],
+        temperature=0.9,       # High for creativity
+        max_tokens=1000,
+        frequency_penalty=0.8,  # Avoid repetitive ideas
+        presence_penalty=0.6   # Explore different angles
+    )
+    
+    return response.choices[0].message.content
+
+# Usage
+feature = "File upload with drag and drop"
+edge_cases = brainstorm_edge_cases(feature)
+print(edge_cases)
+```
+
+### Example 3: Compare Temperatures
+
+```python
+def compare_temperatures(prompt: str):
+    """Run the same prompt with different temperatures to see the difference."""
     
     temperatures = [0.2, 0.7, 1.2]
     
@@ -317,106 +512,155 @@ def test_temperature_variations():
         print(f"Temperature: {temp}")
         print('='*50)
         
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+        response = client.chat.completions.create(
+            model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            temperature=temp
+            temperature=temp,
+            max_tokens=300
         )
         
         print(response.choices[0].message.content)
-        print()
 
-# Run the test
-test_temperature_variations()
+# Usage
+compare_temperatures("Name 5 test scenarios for a shopping cart feature")
 ```
 
-### Exercise 2.2: Parameter Experimentation
+---
 
-**Task:** Test different parameter settings
+## 💻 Exercise: Temperature Experimentation
 
-1. **Test Case Generation:**
-   - Run the same prompt 3 times with temperature=0.2
-   - Run the same prompt 3 times with temperature=1.0
-   - Compare the consistency and variety
+### Exercise 2.2: Test Temperature Effects
 
-2. **Code Generation:**
-   - Generate Python code with temperature=0.1
-   - Generate the same code with temperature=0.8
-   - Compare code quality and variation
+**Step 1:** Use this prompt with different temperatures
 
-3. **Optimal Settings:**
-   - Find the best temperature for generating API test cases
-   - Find the best temperature for finding security vulnerabilities
-   - Document your findings
+```
+Suggest 5 creative names for a test automation framework
+```
 
-### Best Practices
+**Step 2:** Try temperatures: 0.2, 0.5, 1.0
 
-✅ **DO:**
-- Use low temperature (0.2-0.4) for code generation
-- Use low temperature for consistent test cases
-- Use higher temperature (0.7-1.0) for brainstorming
-- Experiment to find optimal settings for your use case
-- Set appropriate max_tokens to avoid truncated responses
+**Step 3:** Document your observations:
 
-❌ **DON'T:**
-- Use both temperature and top_p together
-- Use very high temperature (>1.5) for production code
-- Ignore token limits (responses may be cut off)
-- Use same settings for all tasks
+| Temperature | Observations |
+|-------------|--------------|
+| 0.2 | Names are: _______, similarity level: _______ |
+| 0.5 | Names are: _______, similarity level: _______ |
+| 1.0 | Names are: _______, similarity level: _______ |
 
-### Troubleshooting
+**Step 4:** Run each temperature 3 times. Are results consistent?
 
-**Problem:** Responses are too similar/boring
+### Exercise 2.3: Find Optimal Settings
+
+**Task:** For each scenario, determine the optimal temperature:
+
+| Scenario | Your Recommended Temp | Why? |
+|----------|----------------------|------|
+| Generate pytest code for login tests | ___ | ___ |
+| Find security vulnerabilities | ___ | ___ |
+| Create API documentation | ___ | ___ |
+| Brainstorm mobile app test ideas | ___ | ___ |
+| Write SQL queries for test data | ___ | ___ |
+
+---
+
+## 🔧 Troubleshooting Common Issues
+
+### Problem: Response is too similar every time
 ```python
-# Solution: Increase temperature and frequency_penalty
-temperature=0.8
-frequency_penalty=0.6
+# Solution: Increase temperature
+temperature = 0.8  # Instead of 0.2
+frequency_penalty = 0.6  # Add some variation
 ```
 
-**Problem:** Code is inconsistent or broken
+### Problem: Code is inconsistent or broken
 ```python
 # Solution: Decrease temperature
-temperature=0.2
-top_p=0.1
+temperature = 0.1  # More consistent
+top_p = 0.1  # Very focused
 ```
 
-**Problem:** Response is cut off
+### Problem: Response is cut off
 ```python
 # Solution: Increase max_tokens
-max_tokens=3000
+max_tokens = 3000  # Instead of 1000
 ```
 
-**Problem:** Too much repetition
+### Problem: Too much repetition
 ```python
-# Solution: Increase frequency_penalty
-frequency_penalty=0.7
-presence_penalty=0.5
+# Solution: Increase penalties
+frequency_penalty = 0.7
+presence_penalty = 0.5
 ```
 
-### Key Takeaways
-
-✅ Temperature controls randomness (low = consistent, high = creative)
-✅ Use low temperature (0.2-0.3) for code and test cases
-✅ Use higher temperature (0.7-1.0) for brainstorming
-✅ Max tokens controls response length
-✅ Frequency/presence penalties reduce repetition
-✅ Experiment to find optimal settings for each task type
-✅ Different tasks need different parameter configurations
-
-### Quick Reference Card
-
-```
-Task Type              | Temp  | Max Tokens | Freq Pen | Pres Pen
------------------------|-------|------------|----------|----------
-Code Generation        | 0.2   | 2000       | 0.2      | 0
-Test Cases (Detailed)  | 0.3   | 1500       | 0.3      | 0
-Bug Analysis           | 0.3   | 1000       | 0.2      | 0
-Edge Case Ideas        | 0.9   | 800        | 0.7      | 0.6
-Test Strategy          | 0.5   | 1200       | 0.4      | 0.3
-Code Review            | 0.3   | 1500       | 0.3      | 0.2
-Documentation          | 0.4   | 1000       | 0.3      | 0
-Brainstorming          | 1.0   | 1000       | 0.8      | 0.7
+### Problem: Response is too random/weird
+```python
+# Solution: Lower temperature
+temperature = 0.3  # Instead of 1.0+
 ```
 
-### Next Steps
-- Move to [Lesson 3: Best Practices and Prompt Optimization](03-best-practices.md)
+---
+
+## 📝 Key Takeaways
+
+1. **Temperature** is the most important parameter - controls creativity vs consistency
+2. **Low temperature (0.1-0.3)** for code, test cases, documentation
+3. **High temperature (0.7-1.0)** for brainstorming, edge cases, creativity
+4. **Max tokens** controls response length - increase if cut off
+5. **Frequency/presence penalties** reduce repetition
+6. **Use either temperature OR top_p, not both**
+7. In web interface, use **prompt wording** to influence behavior
+
+---
+
+## ✅ Lesson 2 Checklist
+
+Before moving on, ensure you can:
+
+- [ ] Explain what temperature does
+- [ ] Choose appropriate temperature for different tasks
+- [ ] Understand max tokens and its purpose
+- [ ] Know when to use frequency/presence penalties
+- [ ] Use prompts to influence ChatGPT web interface
+- [ ] Complete all exercises
+
+---
+
+## 🔗 Next Steps
+
+You've mastered parameters! 🎉
+
+**Continue to:** [Lesson 3: Best Practices and Optimization](./03-best-practices.md)
+
+---
+
+## 📖 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  PARAMETERS QUICK REFERENCE                                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  🌡️ TEMPERATURE                                                  │
+│     0.0-0.3: Code, documentation, consistent output             │
+│     0.4-0.7: Balanced (default)                                 │
+│     0.7-1.0: Brainstorming, creative ideas                      │
+│                                                                  │
+│  📏 MAX TOKENS                                                   │
+│     Short answer: 200-500                                       │
+│     Medium: 500-1000                                            │
+│     Long/code: 1000-2000                                        │
+│                                                                  │
+│  🔄 FREQUENCY PENALTY (0 to 2)                                   │
+│     Higher = less repetition                                    │
+│                                                                  │
+│  ✨ PRESENCE PENALTY (0 to 2)                                    │
+│     Higher = more topic variety                                 │
+│                                                                  │
+│  ⚠️ REMEMBER: Temperature OR top_p, not both!                   │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+**Great progress! Let's learn best practices next! 🚀**
