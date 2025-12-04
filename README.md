@@ -176,6 +176,9 @@ prompt-engineering-course/
 ├── projects/                   # Hands-on projects
 │   ├── project-1-test-suite-generator/
 │   └── project-2-bug-triage-assistant/
+├── project-answers/            # Reference implementations
+│   ├── project-1-test-suite-generator/
+│   └── project-2-bug-triage-assistant/
 ├── exercises/                  # Practice exercises
 │   └── practice-prompts.md
 ├── resources/                  # Additional resources

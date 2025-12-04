@@ -192,4 +192,4 @@ Generate a Python function to validate email addresses with unit tests
 ✅ AI is a tool to augment, not replace, human expertise
 
 ### Next Steps
-Move to Lesson 3: Setting Up Your Environment
+- Move to [Lesson 3: Setting Up Your Environment](03-setting-up-environment.md)

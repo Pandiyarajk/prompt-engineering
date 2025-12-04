@@ -559,4 +559,6 @@ Your implementation:
 ✅ Monitor costs and set appropriate limits
 
 ### Next Steps
-Move to Lesson 2: Building Testing Agents with LangChain
+- Explore [Projects](../projects/) to apply your knowledge
+- Review [Practice Exercises](../../exercises/practice-prompts.md)
+- Continue with Module 7 when Lesson 2 is available

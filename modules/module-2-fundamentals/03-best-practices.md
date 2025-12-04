@@ -525,4 +525,4 @@ Your optimized version:
 ### Next Steps
 - Practice optimizing prompts daily
 - Build your personal prompt library
-- Move to Module 3: Prompt Engineering for Manual QA
+- Move to [Module 3: Prompt Engineering for Manual QA](../module-3-manual-qa/README.md)
