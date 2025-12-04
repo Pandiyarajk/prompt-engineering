@@ -664,4 +664,4 @@ Your prompt:
 ✅ Consider performance and security
 
 ### Next Steps
-Move to Lesson 2: Code Review and Debugging with AI
+- Move to [Module 7: AI Agents and Automation](../module-7-ai-agents/README.md) (or continue with Module 5 when Lesson 2 is available)

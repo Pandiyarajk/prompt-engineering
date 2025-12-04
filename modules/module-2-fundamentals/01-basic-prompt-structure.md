@@ -332,4 +332,4 @@ Before submitting a prompt, ask:
 - [ ] Is this one focused task (not multiple)?
 
 ### Next Steps
-Move to Lesson 2: Parameters and Temperature Settings
+- Move to [Lesson 2: Parameters and Temperature Settings](02-parameters-and-settings.md)

@@ -367,4 +367,4 @@ python -m pip install --upgrade pip
 - Verify your environment is working
 - Create your workspace folders
 - Start a prompt template library
-- Move to Module 2: Fundamentals of Prompt Engineering
+- Move to [Module 2: Fundamentals of Prompt Engineering](../module-2-fundamentals/README.md)

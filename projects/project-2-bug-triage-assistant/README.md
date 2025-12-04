@@ -471,6 +471,6 @@ Submit:
 
 ## Next Steps
 
-- Move to Project 3: Code Review Bot
+- Check out [Project Answers](../../project-answers/) for reference implementations
 - Deploy your application
 - Share with your QA team!

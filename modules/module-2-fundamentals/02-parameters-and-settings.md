@@ -419,4 +419,4 @@ Brainstorming          | 1.0   | 1000       | 0.8      | 0.7
 ```
 
 ### Next Steps
-Move to Lesson 3: Best Practices and Prompt Optimization
+- Move to [Lesson 3: Best Practices and Prompt Optimization](03-best-practices.md)

@@ -353,6 +353,7 @@ Submit:
 ## Next Steps
 
 After completing this project:
-- Move to Project 2: Bug Triage Assistant
+- Move to [Project 2: Bug Triage Assistant](../project-2-bug-triage-assistant/README.md)
+- Check out [Project Answers](../../project-answers/) for reference implementations
 - Enhance with more advanced features
 - Share with the community!

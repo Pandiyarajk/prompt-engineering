@@ -86,4 +86,4 @@ Try these prompts and observe the differences:
 ✅ Iteration and refinement are essential
 
 ### Next Steps
-Move to Lesson 2: ChatGPT and AI Agents Overview
+- Move to [Lesson 2: ChatGPT and AI Agents Overview](02-chatgpt-and-ai-agents-overview.md)

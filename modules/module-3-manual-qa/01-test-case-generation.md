@@ -554,4 +554,4 @@ Add performance test cases:
 ✅ Use domain-specific context for better results
 
 ### Next Steps
-Move to Lesson 2: Bug Report Generation
+- Move to [Module 4: Prompt Engineering for Automation Testing](../module-4-automation-testing/README.md) (or continue with Module 3 when Lesson 2 is available)

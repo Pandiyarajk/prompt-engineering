@@ -115,7 +115,7 @@
 
 **Difficulty:** Intermediate | **Time:** 8-10 hours
 
-[📂 Project Details](projects/project-1-test-suite-generator/README.md)
+[📂 Project Details](projects/project-1-test-suite-generator/README.md) | [📚 Project Answers](project-answers/project-1-test-suite-generator/)
 
 **What You'll Build:**
 
@@ -132,7 +132,7 @@
 
 **Difficulty:** Advanced | **Time:** 12-15 hours
 
-[📂 Project Details](projects/project-2-bug-triage-assistant/README.md)
+[📂 Project Details](projects/project-2-bug-triage-assistant/README.md) | [📚 Project Answers](project-answers/project-2-bug-triage-assistant/)
 
 **What You'll Build:**
 
@@ -142,6 +142,20 @@
 - Web interface
 
 **Skills:** NLP, Web development, API integration, AI classification
+
+---
+
+### Project Answers
+
+[📚 View All Project Answers](project-answers/)
+
+Reference implementations and solutions for all projects. Use these to:
+- Understand different approaches
+- Learn best practices
+- Compare your implementation
+- Get unstuck when facing challenges
+
+**Note:** Try solving projects yourself first! Use answers as a learning resource.
 
 ---
 

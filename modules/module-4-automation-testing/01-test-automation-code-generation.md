@@ -614,4 +614,4 @@ After AI generates code:
 ✅ Request documentation and examples
 
 ### Next Steps
-Move to Lesson 2: Test Data Generation with AI
+- Move to [Module 5: Prompt Engineering for Developers](../module-5-developers/README.md) (or continue with Module 4 when Lesson 2 is available)
