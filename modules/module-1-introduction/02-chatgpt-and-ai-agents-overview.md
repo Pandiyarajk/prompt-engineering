@@ -169,23 +169,23 @@ In this lesson, you'll learn:
 
 ### What LLMs CAN Do
 
-✅ Generate text based on patterns learned
-✅ Understand context and nuance
-✅ Write code in many languages
-✅ Translate between languages
-✅ Summarize long documents
-✅ Explain complex topics simply
-✅ Create structured outputs (tables, JSON, etc.)
-✅ Role-play as different experts
+- ✅ Generate text based on patterns learned
+- ✅ Understand context and nuance
+- ✅ Write code in many languages
+- ✅ Translate between languages
+- ✅ Summarize long documents
+- ✅ Explain complex topics simply
+- ✅ Create structured outputs (tables, JSON, etc.)
+- ✅ Role-play as different experts
 
 ### What LLMs CANNOT Do
 
-❌ Access the internet in real-time (unless specifically enabled)
-❌ Remember previous conversations (new chat = fresh start)
-❌ Execute code (just generates it)
-❌ Access your files or systems
-❌ Guarantee 100% accuracy
-❌ Have true "understanding" (pattern matching, not thinking)
+- ❌ Access the internet in real-time (unless specifically enabled)
+- ❌ Remember previous conversations (new chat = fresh start)
+- ❌ Execute code (just generates it)
+- ❌ Access your files or systems
+- ❌ Guarantee 100% accuracy
+- ❌ Have true "understanding" (pattern matching, not thinking)
 
 ---
 
@@ -446,19 +446,19 @@ def login(user, pwd):
 
 ### What AI Does Well
 
-✅ **Brainstorming** - Generate lots of ideas quickly
-✅ **Drafts** - Create first versions to refine
-✅ **Boilerplate** - Generate repetitive code structures
-✅ **Explanation** - Clarify complex concepts
-✅ **Formatting** - Convert between formats
+- ✅ **Brainstorming** - Generate lots of ideas quickly
+- ✅ **Drafts** - Create first versions to refine
+- ✅ **Boilerplate** - Generate repetitive code structures
+- ✅ **Explanation** - Clarify complex concepts
+- ✅ **Formatting** - Convert between formats
 
 ### What AI Struggles With
 
-❌ **Latest information** - Knowledge cutoff dates
-❌ **Your specific codebase** - Doesn't know your project
-❌ **Complex business logic** - May miss nuances
-❌ **100% accuracy** - Always verify output
-❌ **Running code** - Can only generate, not execute
+- ❌ **Latest information** - Knowledge cutoff dates
+- ❌ **Your specific codebase** - Doesn't know your project
+- ❌ **Complex business logic** - May miss nuances
+- ❌ **100% accuracy** - Always verify output
+- ❌ **Running code** - Can only generate, not execute
 
 ### Best Practices
 
@@ -583,3 +583,4 @@ You've completed Lesson 2! 🎉
 ---
 
 **Great job! On to the final lesson in Module 1! 🚀**
+
