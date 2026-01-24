@@ -36,25 +36,25 @@ In this lesson, you'll learn:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  HOW CHATGPT WORKS (SIMPLIFIED)                                  │
+│  HOW CHATGPT WORKS (SIMPLIFIED)                                 │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
+│                                                                 │
 │  1. TRAINING (already done by OpenAI):                          │
-│     • ChatGPT "read" billions of text documents                  │
-│     • Books, websites, code repositories, articles               │
-│     • Learned patterns in language                               │
+│     • ChatGPT "read" billions of text documents                 │
+│     • Books, websites, code repositories, articles              │
+│     • Learned patterns in language                              │
 │     • Learned how to respond helpfully                          │
-│                                                                  │
-│  2. YOUR PROMPT (when you use it):                               │
-│     • You type your question or request                          │
-│     • ChatGPT analyzes your text                                 │
+│                                                                 │
+│  2. YOUR PROMPT (when you use it):                              │
+│     • You type your question or request                         │
+│     • ChatGPT analyzes your text                                │
 │     • Understands context and intent                            │
-│                                                                  │
-│  3. RESPONSE GENERATION:                                         │
-│     • Predicts most likely helpful response                      │
-│     • Generates text word by word                                │
+│                                                                 │
+│  3. RESPONSE GENERATION:                                        │
+│     • Predicts most likely helpful response                     │
+│     • Generates text word by word                               │
 │     • Tries to be accurate and useful                           │
-│                                                                  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -145,25 +145,25 @@ In this lesson, you'll learn:
 ┌─────────────────────────────────────────────────────────────────┐
 │  YOUR PROMPT: "Create a test case for login"                    │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  1. TOKENIZATION                                                 │
+│                                                                 │
+│  1. TOKENIZATION                                                │
 │     "Create" "a" "test" "case" "for" "login"                    │
 │     Breaks text into pieces called tokens                       │
-│                                                                  │
-│  2. UNDERSTANDING CONTEXT                                        │
-│     • "test case" = software testing concept                     │
-│     • "login" = user authentication feature                      │
+│                                                                 │
+│  2. UNDERSTANDING CONTEXT                                       │
+│     • "test case" = software testing concept                    │
+│     • "login" = user authentication feature                     │
 │     • Understands you want QA-related output                    │
-│                                                                  │
-│  3. PATTERN MATCHING                                             │
+│                                                                 │
+│  3. PATTERN MATCHING                                            │
 │     • Has seen millions of test case examples                   │
 │     • Knows typical test case structure                         │
 │     • Understands testing terminology                           │
-│                                                                  │
-│  4. GENERATION                                                   │
+│                                                                 │
+│  4. GENERATION                                                  │
 │     • Predicts most helpful response                            │
 │     • Generates appropriate test case                           │
-│                                                                  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -195,16 +195,16 @@ In this lesson, you'll learn:
 
 ```
 ┌───────────────────────────────────────────────┐
-│  SIMPLE CHATBOT FLOW                           │
-│                                                │
-│  User: "What's the weather?"                   │
-│          ↓                                     │
-│  Bot: [Looks up predefined response]           │
-│          ↓                                     │
-│  Bot: "I can't help with weather"              │
-│                                                │
-│  • Rule-based                                  │
-│  • Limited responses                           │
+│  SIMPLE CHATBOT FLOW                          │
+│                                               │
+│  User: "What's the weather?"                  │
+│          ↓                                    │
+│  Bot: [Looks up predefined response]          │
+│          ↓                                    │
+│  Bot: "I can't help with weather"             │
+│                                               │
+│  • Rule-based                                 │
+│  • Limited responses                          │
 │  • Can't handle new questions                 │
 └───────────────────────────────────────────────┘
 ```
@@ -213,22 +213,22 @@ In this lesson, you'll learn:
 
 ```
 ┌───────────────────────────────────────────────┐
-│  AI ASSISTANT FLOW                             │
-│                                                │
-│  User: "Create test cases for login"           │
-│          ↓                                     │
-│  AI: [Understands intent]                      │
-│          ↓                                     │
-│  AI: [Generates custom test cases]             │
-│          ↓                                     │
-│  User: "Add security tests"                    │
-│          ↓                                     │
-│  AI: [Builds on previous response]             │
-│                                                │
-│  • Understands natural language                │
-│  • Generates unique responses                  │
-│  • Handles complex requests                    │
-│  • But: You drive the conversation             │
+│  AI ASSISTANT FLOW                            │
+│                                               │
+│  User: "Create test cases for login"          │
+│          ↓                                    │
+│  AI: [Understands intent]                     │
+│          ↓                                    │
+│  AI: [Generates custom test cases]            │
+│          ↓                                    │
+│  User: "Add security tests"                   │
+│          ↓                                    │
+│  AI: [Builds on previous response]            │
+│                                               │
+│  • Understands natural language               │
+│  • Generates unique responses                 │
+│  • Handles complex requests                   │
+│  • But: You drive the conversation            │
 └───────────────────────────────────────────────┘
 ```
 
@@ -236,26 +236,26 @@ In this lesson, you'll learn:
 
 ```
 ┌───────────────────────────────────────────────┐
-│  AI AGENT FLOW                                 │
-│                                                │
-│  User: "Test the login feature completely"     │
-│          ↓                                     │
-│  Agent: [Plans multi-step approach]            │
-│          ↓                                     │
-│  Agent: Step 1 - Analyze requirements          │
-│          ↓                                     │
-│  Agent: Step 2 - Generate test cases           │
-│          ↓                                     │
-│  Agent: Step 3 - Write automation code         │
-│          ↓                                     │
-│  Agent: Step 4 - Execute tests                 │
-│          ↓                                     │
-│  Agent: Step 5 - Report results                │
-│                                                │
-│  • Autonomous operation                        │
-│  • Multi-step planning                         │
-│  • Can use tools (run code, access files)      │
-│  • Minimal human intervention needed           │
+│  AI AGENT FLOW                                │
+│                                               │
+│  User: "Test the login feature completely"    │
+│          ↓                                    │
+│  Agent: [Plans multi-step approach]           │
+│          ↓                                    │
+│  Agent: Step 1 - Analyze requirements         │
+│          ↓                                    │
+│  Agent: Step 2 - Generate test cases          │
+│          ↓                                    │
+│  Agent: Step 3 - Write automation code        │
+│          ↓                                    │
+│  Agent: Step 4 - Execute tests                │
+│          ↓                                    │
+│  Agent: Step 5 - Report results               │
+│                                               │
+│  • Autonomous operation                       │
+│  • Multi-step planning                        │
+│  • Can use tools (run code, access files)     │
+│  • Minimal human intervention needed          │
 └───────────────────────────────────────────────┘
 ```
 
@@ -388,27 +388,27 @@ def login(user, pwd):
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  WHICH TOOL SHOULD I USE?                                        │
+│  WHICH TOOL SHOULD I USE?                                       │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
+│                                                                 │
 │  Need help with a concept or planning?                          │
 │  → ChatGPT or Claude                                            │
-│                                                                  │
+│                                                                 │
 │  Need code suggestions while writing?                           │
 │  → GitHub Copilot or Cursor                                     │
-│                                                                  │
+│                                                                 │
 │  Need to analyze a long document?                               │
 │  → Claude (large context window)                                │
-│                                                                  │
+│                                                                 │
 │  Need to generate test cases or reports?                        │
 │  → ChatGPT (great for structured output)                        │
-│                                                                  │
+│                                                                 │
 │  Need autonomous code generation in IDE?                        │
-│  → Cursor                                                        │
-│                                                                  │
+│  → Cursor                                                       │
+│                                                                 │
 │  Starting out and learning?                                     │
 │  → ChatGPT Free Tier                                            │
-│                                                                  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -582,5 +582,6 @@ You've completed Lesson 2! 🎉
 
 ---
 
-**Great job! On to the final lesson in Module 1! 🚀**
+**Great job! On to the final lesson in Module 1! 🚀**  [👉 Setting up Environment](modules/module-1-introduction/03-setting-up-environment.md)
+
 
