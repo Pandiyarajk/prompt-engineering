@@ -10,11 +10,11 @@ A comprehensive, hands-on course teaching prompt engineering specifically design
 
 ### Who This Course Is For
 
-✅ **Automation Testers** - Learn to generate test automation code, frameworks, and utilities
-✅ **Manual QA Engineers** - Master test case generation, bug reports, and test strategies
-✅ **Software Developers** - Accelerate development with AI-powered code generation and refactoring
-✅ **DevOps Engineers** - Optimize CI/CD pipelines and testing workflows
-✅ **QA Managers** - Understand AI capabilities for team productivity
+- ✅ **Automation Testers** - Learn to generate test automation code, frameworks, and utilities
+- ✅ **Manual QA Engineers** - Master test case generation, bug reports, and test strategies
+- ✅ **Software Developers** - Accelerate development with AI-powered code generation and refactoring
+- ✅ **DevOps Engineers** - Optimize CI/CD pipelines and testing workflows
+- ✅ **QA Managers** - Understand AI capabilities for team productivity
 
 ### What You'll Learn
 
@@ -423,3 +423,4 @@ Ready to master prompt engineering?
 2. **Track Your Progress:** [Progress Tracker]
 
 **Let's build the future of testing and development together! 🚀**
+
