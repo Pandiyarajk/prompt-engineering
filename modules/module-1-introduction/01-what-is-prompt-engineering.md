@@ -502,4 +502,5 @@ You've completed Lesson 1! 🎉
 
 ---
 
-**Great job completing Lesson 1! See you in Lesson 2! 🚀**
+**Great job completing Lesson 1! See you in Lesson 2! 🚀**  [👉 ChatGPT AI Agents Overview](02-chatgpt-and-ai-agents-overview.md)
+
