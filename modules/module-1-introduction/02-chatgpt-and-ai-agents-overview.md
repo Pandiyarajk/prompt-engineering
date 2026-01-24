@@ -582,6 +582,7 @@ You've completed Lesson 2! 🎉
 
 ---
 
-**Great job! On to the final lesson in Module 1! 🚀**  [👉 Setting up Environment](modules/module-1-introduction/03-setting-up-environment.md)
+**Great job! On to the final lesson in Module 1! 🚀**  [👉 Setting up Environment](03-setting-up-environment.md)
+
 
 
