@@ -147,7 +147,7 @@ Module 1 → Module 2 → Module 3 → Module 6 → Module 7 → Projects 1 & 2
 **For Automation Engineers:**
 
 ```
-Module 1 → Module 2 → Module 3 → Module 4 → Module 6 → Module 7 → All Projects
+Module 1 → Module 2 → Module 4 → Module 6 → Module 7 → All Projects
 ```
 
 **For Developers:**
@@ -227,16 +227,16 @@ prompt-engineering-course/
 
 After completing this course, you will be able to:
 
-✅ Write effective prompts for any testing or development task
-✅ Generate comprehensive test cases 10x faster
-✅ Create test automation code with AI assistance
-✅ Build custom AI agents for testing workflows
-✅ Refactor and improve existing code efficiently
-✅ Debug issues faster with AI-powered analysis
-✅ Create testing frameworks and utilities
-✅ Integrate AI into CI/CD pipelines
-✅ Review code with AI assistance
-✅ Generate technical documentation automatically
+- ✅ Write effective prompts for any testing or development task
+- ✅ Generate comprehensive test cases 10x faster
+- ✅ Create test automation code with AI assistance
+- ✅ Build custom AI agents for testing workflows
+- ✅ Refactor and improve existing code efficiently
+- ✅ Debug issues faster with AI-powered analysis
+- ✅ Create testing frameworks and utilities
+- ✅ Integrate AI into CI/CD pipelines
+- ✅ Review code with AI assistance
+- ✅ Generate technical documentation automatically
 
 ---
 
@@ -423,4 +423,5 @@ Ready to master prompt engineering?
 2. **Track Your Progress:** [Progress Tracker]
 
 **Let's build the future of testing and development together! 🚀**
+
 
