@@ -581,7 +581,7 @@ You are a Code Review Expert who:
 
 ```python
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[
         {
             "role": "system",

@@ -352,7 +352,7 @@ This course is licensed under the MIT License - see the [LICENSE](LICENSE) file 
 
 ## 🙏 Acknowledgments
 
-- OpenAI for ChatGPT and GPT-4 API
+- OpenAI for ChatGPT and GPT-5.2 API
 - The testing and development community
 - All contributors and students
 - Open source projects that inspired this course

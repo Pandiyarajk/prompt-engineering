@@ -302,7 +302,7 @@ class TestCaseGeneratorAgent:
     def _call_ai(self, prompt):
         """Helper to call OpenAI API"""
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-5.2",
             messages=[
                 {"role": "system", "content": "You are a senior QA engineer."},
                 {"role": "user", "content": prompt}
@@ -400,7 +400,7 @@ Agent autonomous steps:
 7. Repeat until 100%
 ```
 
-#### 3. **Custom Agent with GPT-4**
+#### 3. **Custom Agent with GPT-5.2**
 
 **Advanced Pattern:**
 

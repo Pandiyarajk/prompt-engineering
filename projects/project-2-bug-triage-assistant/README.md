@@ -54,7 +54,7 @@ Build an intelligent system that automatically analyzes bug reports, classifies 
 ## Technical Stack
 
 - **Language:** Python 3.9+
-- **AI:** OpenAI GPT-4 API
+- **AI:** OpenAI GPT-5.2 API
 - **Web Framework:** Flask or FastAPI
 - **Database:** SQLite or PostgreSQL
 - **Testing:** pytest

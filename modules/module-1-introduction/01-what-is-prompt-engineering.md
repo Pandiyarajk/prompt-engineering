@@ -495,7 +495,7 @@ You've completed Lesson 1! 🎉
 |------|------------|
 | **Prompt** | Text input given to an AI model |
 | **Prompt Engineering** | The skill of crafting effective AI prompts |
-| **LLM** | Large Language Model (e.g., GPT-4) |
+| **LLM** | Large Language Model (e.g., GPT-5.2) |
 | **Context** | Background information in a prompt |
 | **Iteration** | Refining prompts based on responses |
 | **Token** | Unit of text (~4 characters or 0.75 words) |

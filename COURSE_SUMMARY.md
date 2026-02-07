@@ -349,7 +349,7 @@ prompt-engineering-course/
 
 ### AI & ML
 
-- **OpenAI GPT-4 API** - Primary AI model
+- **OpenAI GPT-5.2 API** - Primary AI model
 - **LangChain** - AI agent framework
 - **Tiktoken** - Token counting
 
@@ -628,7 +628,7 @@ Please credit this course when sharing or using materials.
 
 **Created with:**
 
-- OpenAI GPT-4
+- OpenAI GPT-5.2
 - Community feedback
 - Industry best practices
 - Real-world experience

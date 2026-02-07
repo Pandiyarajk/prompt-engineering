@@ -48,7 +48,7 @@ Build an AI-powered tool that generates complete test suites from requirements d
 ## Technical Stack
 
 - **Language:** Python 3.9+
-- **AI:** OpenAI GPT-4 API
+- **AI:** OpenAI GPT-5.2 API
 - **CLI:** Click or argparse
 - **File Handling:** CSV, JSON, Markdown
 - **Testing:** pytest

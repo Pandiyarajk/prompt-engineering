@@ -114,7 +114,7 @@ Temperature 1.0 (Run 3 times):
 ```python
 # API call example with low temperature
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[...],
     temperature=0.2  # Consistent, working code
 )
@@ -141,7 +141,7 @@ response = client.chat.completions.create(
 ✅ **Brainstorming**
 ```python
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[...],
     temperature=0.9  # Creative, varied ideas
 )
@@ -182,14 +182,14 @@ Max tokens limits the **length** of the AI response. Roughly:
 ```python
 # Short response (quick test case summary)
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[{"role": "user", "content": "List 5 login test scenarios"}],
     max_tokens=200
 )
 
 # Long response (complete test suite)
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[{"role": "user", "content": "Create complete Selenium test file"}],
     max_tokens=2000
 )
@@ -229,14 +229,14 @@ Top P = 1.0
 ```python
 # CORRECT - Use temperature
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[...],
     temperature=0.3
 )
 
 # CORRECT - Use top_p (with temperature=1)
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[...],
     temperature=1,
     top_p=0.1
@@ -244,7 +244,7 @@ response = client.chat.completions.create(
 
 # INCORRECT - Don't use both
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[...],
     temperature=0.3,
     top_p=0.5  # Don't do this!
@@ -278,7 +278,7 @@ Frequency Penalty = 1.0: Strong avoidance of repetition
 
 ```python
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[{"role": "user", "content": "Generate 20 different test scenarios"}],
     frequency_penalty=0.7  # Avoid repetitive scenarios
 )
@@ -298,7 +298,7 @@ Presence Penalty = 1.0: Actively explore new topics
 
 ```python
 response = client.chat.completions.create(
-    model="gpt-4",
+    model="gpt-5.2",
     messages=[{"role": "user", "content": "What are different ways to test this?"}],
     presence_penalty=0.6  # Explore diverse approaches
 )
@@ -433,7 +433,7 @@ def generate_test_cases(feature_description: str) -> str:
     """Generate consistent test cases for a feature."""
     
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-5.2",
         messages=[
             {
                 "role": "system",
@@ -469,7 +469,7 @@ def brainstorm_edge_cases(feature_description: str) -> str:
     """Generate creative edge cases for testing."""
     
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-5.2",
         messages=[
             {
                 "role": "system",
@@ -513,7 +513,7 @@ def compare_temperatures(prompt: str):
         print('='*50)
         
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-5.2",
             messages=[{"role": "user", "content": prompt}],
             temperature=temp,
             max_tokens=300
