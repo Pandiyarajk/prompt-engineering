@@ -45,7 +45,7 @@ The parser extracts:
 
 ### 2. Test Generator
 
-Uses OpenAI GPT-4 with carefully crafted prompts to generate:
+Uses OpenAI GPT-5.2 with carefully crafted prompts to generate:
 - Functional test cases
 - Negative test cases
 - Edge cases
@@ -164,7 +164,7 @@ project-1-test-suite-generator/
 
 ## Notes
 
-- This implementation uses OpenAI GPT-4 API
+- This implementation uses OpenAI GPT-5.2 API
 - Requires API key in `.env` file
 - Rate limiting implemented to avoid API quota issues
 - Error handling for API failures with retry logic

@@ -250,7 +250,7 @@ project-2-bug-triage-assistant/
 
 ## Notes
 
-- Uses OpenAI GPT-4 API for analysis
+- Uses OpenAI GPT-5.2 API for analysis
 - Requires API key in `.env` file
 - SQLite database for bug storage
 - FastAPI for web API

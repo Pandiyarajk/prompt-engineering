@@ -7,8 +7,8 @@ Effective context management is crucial for maintaining coherent conversations w
 AI models have limited context windows - the amount of text they can "remember" in a single conversation. When the context exceeds this limit, older information may be lost.
 
 ### Common Context Limits
-- GPT-3.5: ~4,000 tokens (~3,000 words)
-- GPT-4: ~8,000-32,000 tokens (varies by model)
+- GPT-5: ~4,000 tokens (~3,000 words)
+- GPT-5.2: ~8,000-32,000 tokens (varies by model)
 - Claude: ~100,000 tokens
 
 ## Why Context Management Matters

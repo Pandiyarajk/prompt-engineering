@@ -71,7 +71,7 @@ In this lesson, you'll learn:
 
 ## 📊 ChatGPT Versions Explained
 
-### GPT-3.5 (Free Tier)
+### GPT-5 (Free Tier)
 
 **Best for:**
 - Learning and practice
@@ -87,7 +87,7 @@ In this lesson, you'll learn:
 
 **Good for beginners!** Start here.
 
-### GPT-4 (ChatGPT Plus - $20/month)
+### GPT-5.2 (ChatGPT Plus - $20/month)
 
 **Best for:**
 - Complex coding tasks
@@ -104,7 +104,7 @@ In this lesson, you'll learn:
 
 **Recommended for professional use.**
 
-### GPT-4 Turbo & GPT-4o
+### GPT-5.2 Turbo & GPT-5.2o
 
 **Latest versions with:**
 - Even larger context windows (up to 128K tokens)
@@ -114,14 +114,14 @@ In this lesson, you'll learn:
 
 ### Version Comparison for QA Tasks
 
-| Task | GPT-3.5 | GPT-4 | Recommendation |
-|------|---------|-------|----------------|
-| Simple test cases | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | GPT-3.5 OK |
-| Complex test strategies | ⭐⭐ | ⭐⭐⭐⭐⭐ | Use GPT-4 |
-| Basic code generation | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | GPT-3.5 OK |
-| Complex automation code | ⭐⭐ | ⭐⭐⭐⭐⭐ | Use GPT-4 |
-| Bug analysis | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | Use GPT-4 |
-| Documentation | ⭐⭐⭐ | ⭐⭐⭐⭐ | GPT-3.5 OK |
+| Task | GPT-5 | GPT-5.2 | Recommendation |
+|------|-------|---------|----------------|
+| Simple test cases | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | GPT-5 OK |
+| Complex test strategies | ⭐⭐ | ⭐⭐⭐⭐⭐ | Use GPT-5.2 |
+| Basic code generation | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | GPT-5 OK |
+| Complex automation code | ⭐⭐ | ⭐⭐⭐⭐⭐ | Use GPT-5.2 |
+| Bug analysis | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | Use GPT-5.2 |
+| Documentation | ⭐⭐⭐ | ⭐⭐⭐⭐ | GPT-5 OK |
 
 ---
 
@@ -537,7 +537,7 @@ Compare the different perspectives!
 ## 📝 Key Takeaways
 
 1. **ChatGPT** is a conversational AI assistant powered by LLMs
-2. **GPT-4** is more capable but GPT-3.5 is great for learning
+2. **GPT-5.2** is more capable but GPT-5 is great for learning
 3. **AI Agents** are more autonomous than simple chat assistants
 4. Different AI tools excel at different tasks
 5. AI can save 70-85% time on routine tasks
@@ -551,7 +551,7 @@ Compare the different perspectives!
 Before moving on, ensure you can:
 
 - [ ] Explain what ChatGPT is in simple terms
-- [ ] Describe the difference between GPT-3.5 and GPT-4
+- [ ] Describe the difference between GPT-5 and GPT-5.2
 - [ ] Define what an LLM is
 - [ ] Explain the difference between chatbots, AI assistants, and AI agents
 - [ ] Name 3 types of AI agents used in testing
@@ -574,7 +574,7 @@ You've completed Lesson 2! 🎉
 |------|------------|
 | **LLM** | Large Language Model - AI trained on vast text data |
 | **ChatGPT** | OpenAI's conversational AI assistant |
-| **GPT-4** | Latest version of OpenAI's language model |
+| **GPT-5.2** | Latest version of OpenAI's language model |
 | **Token** | Piece of text (~4 characters or 0.75 words) |
 | **AI Agent** | Autonomous AI that can plan and take actions |
 | **Context Window** | Amount of text AI can "remember" at once |

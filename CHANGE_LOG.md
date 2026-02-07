@@ -2,6 +2,17 @@
 
 All notable changes to this course will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+- **Model references:** Replaced all GPT-4 and GPT-3.5 (or less) model references with GPT-5.2 across the repository:
+  - Module 1: ChatGPT/LLM overview, comparison table (GPT-5 vs GPT-5.2), glossary, API examples (`gpt-3.5-turbo` → `gpt-5.2`)
+  - Module 2: All `model="gpt-4"` code samples → `model="gpt-5.2"`
+  - Module 6: Context window examples (GPT-3.5/GPT-4 → GPT-5/GPT-5.2)
+  - Module 7: Custom agent example and heading (GPT-4 → GPT-5.2)
+  - Projects & project-answers READMEs: API descriptions (GPT-4 API → GPT-5.2 API)
+  - Root README.md and COURSE_SUMMARY.md: OpenAI model references updated to GPT-5.2
+
 ## [2.0.0] - Comprehensive Course Enhancement
 
 This release represents a major overhaul making the course accessible to complete beginners while maintaining depth for experienced practitioners.
