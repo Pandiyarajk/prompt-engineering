@@ -193,18 +193,32 @@ Agent Actions:
 **Python Implementation:**
 
 ```python
-import openai
 import os
+from datetime import datetime
+
+from openai import OpenAI
+
+
+def _ts():
+    """Current timestamp for progress messages."""
+    return datetime.now().strftime("[%H:%M:%S] ")
 
 class TestCaseGeneratorAgent:
     """
     AI Agent that autonomously generates test cases
     """
     
-    def __init__(self, api_key):
-        self.api_key = api_key
-        openai.api_key = api_key
+    def __init__(self, api_key=None, base_url=None, model="gemma3n:e2b"):
+        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        self.model = model
+        base = base_url or os.getenv("OPENAI_BASE_URL")
+        # Ollama: set OPENAI_BASE_URL=http://localhost:11434/v1 (api_key ignored)
+        kwargs = {"api_key": self.api_key or "ollama", "timeout": 300.0}
+        if base:
+            kwargs["base_url"] = base
+        self.client = OpenAI(**kwargs)
         self.memory = []
+        self._stream_progress = True  # print dots while waiting for response
         
     def analyze_requirements(self, requirements):
         """Step 1: Analyze requirements"""
@@ -273,25 +287,25 @@ class TestCaseGeneratorAgent:
     
     def run(self, requirements):
         """Execute the agent workflow"""
-        print("🤖 Agent: Starting test case generation...")
+        print(f"{_ts()}🤖 Agent: Starting test case generation...")
         
         # Step 1: Analyze
-        print("📊 Analyzing requirements...")
+        print(f"{_ts()}📊 Analyzing requirements...")
         analysis = self.analyze_requirements(requirements)
         
         # Step 2: Generate scenarios
-        print("🎯 Generating test scenarios...")
+        print(f"{_ts()}🎯 Generating test scenarios...")
         scenarios = self.generate_test_scenarios(analysis)
         
         # Step 3: Create test cases
-        print("📝 Creating detailed test cases...")
+        print(f"{_ts()}📝 Creating detailed test cases...")
         test_cases = self.create_test_cases(scenarios)
         
         # Step 4: Validate
-        print("✅ Validating coverage...")
+        print(f"{_ts()}✅ Validating coverage...")
         validation = self.validate_coverage(test_cases, requirements)
         
-        print("✨ Agent: Complete!")
+        print(f"{_ts()}✨ Agent: Complete!")
         
         return {
             "test_cases": test_cases,
@@ -300,20 +314,47 @@ class TestCaseGeneratorAgent:
         }
     
     def _call_ai(self, prompt):
-        """Helper to call OpenAI API"""
-        response = openai.ChatCompletion.create(
-            model="gpt-5.2",
-            messages=[
-                {"role": "system", "content": "You are a senior QA engineer."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3
+        """Helper to call OpenAI-compatible API (OpenAI or Ollama). Streams with progress dots."""
+        messages = [
+            {"role": "system", "content": "You are a senior QA engineer."},
+            {"role": "user", "content": prompt}
+        ]
+        if self._stream_progress:
+            print(f"{_ts()}  (calling model, first token may take a minute)...", flush=True)
+            stream = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=0.3,
+                stream=True,
+            )
+            chunks = []
+            for chunk in stream:
+                delta = chunk.choices[0].delta if chunk.choices else None
+                if delta and getattr(delta, "content", None):
+                    text = delta.content
+                    chunks.append(text)
+                    print(text, end="", flush=True)
+            if chunks:
+                print()  # newline after stream
+            return "".join(chunks)
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            temperature=0.3,
         )
-        return response.choices[0].message.content
+        response_content = response.choices[0].message.content or ""
+        print(f" {_ts()}response: {response_content}")
+        return response_content
 
 # Usage
 if __name__ == "__main__":
-    agent = TestCaseGeneratorAgent(api_key=os.getenv("OPENAI_API_KEY"))
+    # For Ollama: set OPENAI_BASE_URL=http://localhost:11434/v1 (no API key needed)
+    # For OpenAI: set OPENAI_API_KEY=sk-...
+    agent = TestCaseGeneratorAgent(
+        api_key=os.getenv("OPENAI_API_KEY"),
+        base_url=os.getenv("OPENAI_BASE_URL"),
+        model=os.getenv("OPENAI_MODEL", "gemma3n:e2b"),
+    )
     
     requirements = """
     Feature: User Registration
@@ -562,3 +603,4 @@ Your implementation:
 - Explore [Projects](../projects/) to apply your knowledge
 - Review [Practice Exercises](../../exercises/practice-prompts.md)
 - Continue with Module 7 when Lesson 2 is available
+
