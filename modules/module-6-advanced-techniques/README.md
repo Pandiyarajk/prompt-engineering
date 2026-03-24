@@ -81,21 +81,21 @@ Before starting this module, ensure you have:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  BASIC PROMPTING                                                 │
+│  BASIC PROMPTING                                                │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
+│                                                                 │
 │  Prompt: "Check if this code has bugs"                          │
-│                                                                  │
+│                                                                 │
 │  Result: May miss subtle issues, inconsistent analysis          │
-│                                                                  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────┐
-│  ADVANCED TECHNIQUES                                             │
+│  ADVANCED TECHNIQUES                                            │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
+│                                                                 │
 │  Chain-of-Thought + Role + Examples:                            │
-│                                                                  │
+│                                                                 │
 │  "Act as a Senior Security Engineer.                            │
 │   Review this code step by step:                                │
 │   1. First, identify all inputs                                 │
@@ -103,16 +103,16 @@ Before starting this module, ensure you have:
 │   3. Check for injection vulnerabilities                        │
 │   4. Check for authentication issues                            │
 │   5. Summarize findings                                         │
-│                                                                  │
-│   Example vulnerability:                                         │
+│                                                                 │
+│   Example vulnerability:                                        │
 │   [SQL injection example with analysis]                         │
-│                                                                  │
+│                                                                 │
 │   Now analyze this code: [code]"                                │
-│                                                                  │
+│                                                                 │
 │  Result: Thorough, consistent, expert-level analysis            │
-│                                                                  │
-│  IMPROVEMENT: 300-500% better results! 🚀                       │
-│                                                                  │
+│                                                                 │
+│  IMPROVEMENT: 300-500% better results! 🚀                      │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -122,18 +122,18 @@ Before starting this module, ensure you have:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  ADVANCED TECHNIQUES OVERVIEW                                    │
+│  ADVANCED TECHNIQUES OVERVIEW                                   │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
+│                                                                 │
 │  CHAIN-OF-THOUGHT (CoT)                                         │
 │  ─────────────────────                                          │
-│  "Let's solve this step by step..."                            │
+│  "Let's solve this step by step..."                             │
 │  ✓ Complex reasoning tasks                                      │
 │  ✓ Math problems                                                │
 │  ✓ Debugging                                                    │
 │  ✓ Analysis tasks                                               │
-│                                                                  │
-│  FEW-SHOT LEARNING                                               │
+│                                                                 │
+│  FEW-SHOT LEARNING                                              │
 │  ─────────────────────                                          │
 │  "Here are 3 examples: ... Now do this:"                        │
 │  ✓ Consistent output format                                     │
@@ -148,15 +148,15 @@ Before starting this module, ensure you have:
 │  ✓ Domain-specific knowledge                                    │
 │  ✓ Appropriate vocabulary                                       │
 │  ✓ Professional perspective                                     │
-│                                                                  │
-│  CONTEXT MANAGEMENT                                              │
+│                                                                 │
+│  CONTEXT MANAGEMENT                                             │
 │  ─────────────────────                                          │
 │  Summarize, chunk, reference previous context                   │
 │  ✓ Long conversations                                           │
 │  ✓ Multi-file analysis                                          │
 │  ✓ Complex projects                                             │
 │  ✓ Maintaining state                                            │
-│                                                                  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -165,21 +165,21 @@ Before starting this module, ensure you have:
 ## 📊 Module 6 Position in the Course
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                                                                          │
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
 │  Module 1-2        Module 3-5      ┌──────────────────┐                 │
 │  Foundation   →    Domain-Specific │    MODULE 6      │                 │
 │                    Applications →  │ ADVANCED         │                 │
 │                                    │ TECHNIQUES       │                 │
 │                                    │ ← You Are Here   │                 │
 │                                    └────────┬─────────┘                 │
-│                                             │                            │
-│                                             ▼                            │
-│                                    Module 7          Module 8-9          │
-│                                    AI Agents    →    Projects &          │
-│                                    (Future)          Best Practices      │
-│                                                                          │
-└──────────────────────────────────────────────────────────────────────────┘
+│                                             │                           │
+│                                             ▼                           │
+│                                    Module 7          Module 8-9         │
+│                                    AI Agents    →    Projects &         │
+│                                    (Future)          Best Practices     │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
